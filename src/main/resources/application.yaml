@@ -1,3 +1,22 @@
+server:
+  port: 8090
+
 spring:
-  application:
-    name: bff-gateway
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: lista-espera
+              uri: http://localhost:8081
+              predicates:
+                - Path=/bff/lista-espera/**
+              filters:
+                - StripPrefix=2
+
+            - id: portal-pacientes
+              uri: http://localhost:8067
+              predicates:
+                - Path=/bff/portal-pacientes/**
+              filters:
+                - StripPrefix=2

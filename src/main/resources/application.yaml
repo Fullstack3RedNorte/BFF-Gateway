@@ -2,21 +2,50 @@ server:
   port: 8090
 
 spring:
+  application:
+    name: bff-gateway
+
   cloud:
     gateway:
       server:
         webmvc:
           routes:
             - id: lista-espera
-              uri: http://localhost:8081
+              uri: http://localhost:8085
               predicates:
                 - Path=/bff/lista-espera/**
               filters:
                 - StripPrefix=2
 
+            - id: reasignacion
+              uri: http://localhost:8086
+              predicates:
+                - Path=/bff/reasignacion/**
+              filters:
+                - StripPrefix=2
+
+            - id: notificaciones
+              uri: http://localhost:8087
+              predicates:
+                - Path=/bff/notificaciones/**
+              filters:
+                - StripPrefix=2
+
             - id: portal-pacientes
-              uri: http://localhost:8067
+              uri: http://localhost:8088
               predicates:
                 - Path=/bff/portal-pacientes/**
               filters:
                 - StripPrefix=2
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${IDP_JWKS_URI:http://localhost:9000/.well-known/jwks.json}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info

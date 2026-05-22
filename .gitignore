@@ -1,10 +1,27 @@
-HELP.md
+# Maven
 target/
+*.class
+*.jar
+*.war
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### STS ###
+# Credenciales locales — IMPORTANTE no subir a GitHub
+application-dev.yaml
+application-local.yaml
+.env
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# VS Code
+.vscode/
+
+# Eclipse / STS
 .apt_generated
 .classpath
 .factorypath
@@ -13,13 +30,7 @@ target/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
+# NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
@@ -29,5 +40,12 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
-.vscode/
+# MacOS
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Spring Boot
+HELP.md

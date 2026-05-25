@@ -11,28 +11,28 @@ spring:
         webmvc:
           routes:
             - id: lista-espera
-              uri: http://localhost:8085
+              uri: ${MS_LISTA_ESPERA_URL:http://localhost:8085}
               predicates:
                 - Path=/bff/lista-espera/**
               filters:
                 - StripPrefix=2
 
             - id: reasignacion
-              uri: http://localhost:8086
+              uri: ${MS_REASIGNACION_URL:http://localhost:8086}
               predicates:
                 - Path=/bff/reasignacion/**
               filters:
                 - StripPrefix=2
 
             - id: notificaciones
-              uri: http://localhost:8087
+              uri: ${MS_NOTIFICACIONES_URL:http://localhost:8087}
               predicates:
                 - Path=/bff/notificaciones/**
               filters:
                 - StripPrefix=2
 
             - id: portal-pacientes
-              uri: http://localhost:8088
+              uri: ${MS_PORTAL_PACIENTES_URL:http://localhost:8088}
               predicates:
                 - Path=/bff/portal-pacientes/**
               filters:
